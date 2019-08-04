@@ -1,9 +1,9 @@
 # ROPInjector - Rite Of Passage ROP Injector
 Rite Of Passage ROP Injector. Injects a ROP into target process. It allows to choose either regular ROP (that uses VirtualProtect) or a Rite Of Passage ROP that bypasses most endpoint exploit protections. It performs injection using the following steps:
 * Allocate Read/Write memory on target process.
-* Write the shellcode that that memory.
+* Write the shellcode to that memory.
 * Create a new thread on target process.
-* Inject a ROP to the new thread.
+* Inject a ROP to the new thread (using Get/SetThreadContext).
 * ROP will modify protection of the shellcode memory into Executable (using either a call to VirtualProtect or a Rite Of Passage call to NtProtectVirtualMemory).
 * Next, the ROP will run the shellcode.
 * Shellcode creates a mutex named "PWN3D!" and terminates the thread.
